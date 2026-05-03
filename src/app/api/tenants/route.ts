@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongoose';
-import Tenant from '@/models/Tenant.js';
+import Tenant from '@/models/Tenant';
 
 export async function GET(request) {
   try {
@@ -8,7 +8,7 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const categoryId = searchParams.get('categoryId');
     
-    let query = {};
+    const query: Record<string, any> = {};
     if (categoryId) {
       query.tenantCategoryId = categoryId;
     }

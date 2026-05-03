@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongoose';
 import { hashPassword, verifyJWT } from '@/lib/auth';
-import User from '@/models/User.js';
+import User from '@/models/User';
 
 export async function POST(request) {
   try {
