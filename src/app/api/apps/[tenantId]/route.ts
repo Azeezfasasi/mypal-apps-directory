@@ -1,0 +1,16 @@
+import { NextResponse } from 'next/server';
+import connectDB from '@/lib/mongoose';
+import App from '@/models/App.js';
+
+export async function GET(request, { params }) {
+  try {
+    await connectDB();
+    const { tenantId } = await params;
+    const apps = await App.find({ tenantId }).populate('tenantId', 'name');
+    return NextResponse.json(apps);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+  }
+}
+
