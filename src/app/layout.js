@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "MyPal Website Directory",
   description: "A directory of websites built with MyPal, the open-source website builder. Discover and share amazing websites created by the MyPal community.",
+  icons: {
+    icon: "/mypal.png",
+  },
 };
 
 import { ClientProviders } from './providers/client-providers';
