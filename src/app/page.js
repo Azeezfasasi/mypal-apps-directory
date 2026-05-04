@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useProfile } from "../assets/contextAPI/ProfileContext";
+import Image from "next/image";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,15 +28,28 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 relative">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 relative rounded-md">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/background1.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center bg-orange-300"
+          // add overlay to make text more readable
+          // style={{ backgroundImage: "url('/images/bg1.pngf')" }}
         />
+
+        {/* Logo Image */}
+        <div className="flex flex-col items-center justify-center relative z-10 mb-6">
+          <Image
+            src="/images/mypal.svg"
+            width={200}
+            height={200}
+            alt="Logo"
+            className="w-24 h-24 object-contain mb-4"
+          />
+          <h1 className="text-3xl font-bold text-gray-800">Welcome Back!</h1>
+        </div>
 
         <form
           onSubmit={handleSubmit}
-          className="relative z-10 bg-white shadow-lg rounded p-6 w-full max-w-sm border border-gray-200"
+          className="relative z-10 bg-white shadow-md p-6 w-full max-w-sm rounded-md"
         >
           <h2 className="text-xl font-semibold text-gray-700 text-center mb-4">
             Login to Your Account
@@ -54,6 +68,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="Enter your email"
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-2 py-1 border border-gray-300 rounded text-base outline-none focus:ring-2 focus:ring-orange-600"
@@ -89,12 +104,12 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          <div className="text-center mt-3 text-sm text-gray-600">
+          {/* <div className="text-center mt-3 text-sm text-gray-600">
             Don&apos;t have an account?{" "}
             <Link href="/register" className="text-orange-600 hover:underline">
               Register
             </Link>
-          </div>
+          </div> */}
         </form>
       </div>
     </>

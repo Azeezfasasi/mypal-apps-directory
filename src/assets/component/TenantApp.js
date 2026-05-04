@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SquareArrowUpRight } from "lucide-react"
+import { ArrowLeft, SquareArrowUpRight } from "lucide-react"
 
 const TenantApps = () => {
   const [categories, setCategories] = useState([]);
@@ -122,7 +122,7 @@ const TenantApps = () => {
             <p className="text-gray-500 italic">No websites available for this category</p>
           )
         ) : (
-          <p className="text-gray-500 italic"><i className="fa-solid fa-arrow-left"></i> Select a website category from the list</p>
+          <p className="flex items-center text-gray-500 italic"><ArrowLeft  className="w-5 h-5" /> Select a website category from the list</p>
         )}
       </div>
 
@@ -153,7 +153,7 @@ const TenantApps = () => {
             <p className="text-gray-500 italic">No apps available for this website</p>
           )
         ) : (
-          <p className="text-gray-500 italic"><i className="fa-solid fa-arrow-left"></i> Select a website type from the list</p>
+          <p className="flex items-center text-gray-500 italic"><ArrowLeft  className="w-5 h-5" /> Select a website type from the list</p>
         )}
       </div>
     </div>

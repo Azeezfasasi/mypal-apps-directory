@@ -5,6 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useProfile } from '../contextAPI/ProfileContext';
 import NavDropdownMenu from './NavDropDown';
+import Image from 'next/image';
 
 function Header() {
   const { user, logout } = useProfile();
@@ -16,13 +17,13 @@ function Header() {
 
     return (
         <>
-        <div className="m-0 w-full flex flex-col lg:flex-row items-center justify-center lg:justify-around bg-orange-600 px-0 py-5 pb-2 lg:pb-3 h-30 lg:h-30 sticky top-0 overflow-y-visible z-50">
+        <div className="m-0 w-full flex flex-col lg:flex-row items-center justify-center lg:justify-around bg-orange-600 px-0 py-5 pb-4 lg:pb-3 h-20 lg:h-18 sticky top-0 overflow-y-visible z-50">
             <div className="flex flex-row items-center justify-center lg:justify-start mt-2 lg:mt-0">
                 <Link href="/" className="logo-image">
-                    {/* Logo image would go here if available */}
+                    <Image src="/images/mypal.svg" alt="Logo" width={40} height={40} className="mr-2" />
                 </Link>
                 <Link href="/" className="w-fit ml-0">
-                    <h2 className='text-white font-normal text-[20.8px]'>Website Directory</h2>
+                    <h2 className='text-white font-normal text-[20.8px]'>MyPal Directory</h2>
                 </Link>
             </div>
             <div className='hidden lg:block text-white text-[17.6px] font-normal capitalize'>
