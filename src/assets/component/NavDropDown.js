@@ -42,52 +42,52 @@ const NavDropdownMenu = () => {
         <div className="absolute left-0 lg:left-7.5 right-0 lg:right-7 mt-2 w-56 bg-gray-700 border border-gray-200 rounded-lg shadow-lg animate-fadeIn z-50 px-4" style={{padding: "0 3px"}}>
           <ul className="flex flex-col gap-2 py-2" style={{padding: "5px 0"}}>
             <li>
-              <Link href="/app/home" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <AppWindow className='w-4 h-4' /> Website Directory
               </Link>
             </li>
             <li>
-              <Link href="/app/tenantcategorylists" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/tenantcategorylists" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <Group className="w-4 h-4" /> Website Categories
               </Link>
             </li>
             <li>
-              <Link href="/app/addtenantcategory" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/addtenantcategory" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <FolderPlus className="w-4 h-4" /> Add a Website Category
               </Link>
             </li>
             <li>
-              <Link href="/app/tenantLists" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/tenantLists" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <Globe className="w-4 h-4" /> Website Types
               </Link>
             </li>
             <li>
-              <Link href="/app/addtenant" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/addtenant" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <ListPlus className="w-4 h-4" /> Add Website Type
               </Link>
             </li>
             <li>
-              <Link href="/app/tenantapps" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/tenantapps" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <Dock className="w-4 h-4" /> All Apps
               </Link>
             </li>
             <li>
-              <Link href="/app/addtenantapp" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/addtenantapp" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <FolderPlus className="w-4 h-4" /> Create Apps
               </Link>
             </li>
             <li>
-              <Link href="/app/profiledetails" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/profiledetails" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <User className="w-4 h-4" /> Profile Details
               </Link>
             </li>
             <li>
-              <Link href="/app/manageusers" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/manageusers" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <Users className="w-4 h-4" /> Manage Users
               </Link>
             </li>
             <li>
-              <Link href="/app/addnewuser" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+              <Link href="/dashboard/addnewuser" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <UserPlus className="w-4 h-4" /> Add a New User
               </Link>
             </li>

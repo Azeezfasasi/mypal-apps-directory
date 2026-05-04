@@ -5,7 +5,7 @@ import Header from '../../assets/component/Header';
 export default function MyDashboard() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <TenantApps />
     </>
   )
