@@ -7,12 +7,20 @@ export async function GET(request) {
     await connectDB();
     const { searchParams } = new URL(request.url);
     const categoryId = searchParams.get('categoryId');
-    
+    const disabledParam = searchParams.get('disabled');
+
     const query: Record<string, any> = {};
     if (categoryId) {
       query.tenantCategoryId = categoryId;
     }
-    
+    if (disabledParam === 'true') {
+      query.disabled = true;
+    } else if (disabledParam === 'false') {
+      query.disabled = false;
+    } else {
+      query.disabled = false;
+    }
+
     const tenants = await Tenant.find(query).populate('tenantCategoryId', 'name').sort({ name: 1 });
     return NextResponse.json(tenants);
   } catch (error) {

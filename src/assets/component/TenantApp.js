@@ -56,7 +56,7 @@ const TenantApps = () => {
     setSelectedTenant(tenantId);
   
     try {
-      const response = await axios.get(`/api/apps/${tenantId}`);
+      const response = await axios.get(`/api/tenants/${tenantId}/apps`);
       setApps(response.data);
     } catch (err) {
       setError("Failed to fetch apps");
@@ -75,20 +75,21 @@ const TenantApps = () => {
 
         <ul className="w-[95%]">
           {categories
-          .slice()
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((category) => (
-            <li
-              key={category._id} // Ensure key is unique
-              className={`w-full flex justify-between items-center p-3 my-2 rounded-md cursor-pointer font-semibold ${
-                String(selectedCategory) === String(category._id) ? "bg-orange-600 text-white" : "hover:bg-gray-100"
-              }`}
-              onClick={() => handleCategoryClick(category._id)}
-            >
-              {category.name}
-              <i className="fa-solid fa-chevron-right"></i>
-            </li>
-          ))}
+            .filter((category) => !category.disabled)
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((category) => (
+              <li
+                key={category._id} // Ensure key is unique
+                className={`w-full flex justify-between items-center p-3 my-2 rounded-md cursor-pointer font-semibold ${
+                  String(selectedCategory) === String(category._id) ? "bg-orange-600 text-white" : "hover:bg-gray-100"
+                }`}
+                onClick={() => handleCategoryClick(category._id)}
+              >
+                {category.name}
+                <i className="fa-solid fa-chevron-right"></i>
+              </li>
+            ))}
         </ul>
 
       </div>
@@ -100,23 +101,24 @@ const TenantApps = () => {
           tenants.length > 0 ? (
             <ul className="w-[95%]">
               {tenants
-              .slice()
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((tenant) => (
-                <li
-                  key={tenant._id}
-                  className={`w-full h-fit flex flex-row justify-start items-center p-2 my-2 rounded-md cursor-pointer ${
-                    selectedTenant === tenant._id ? "bg-orange-600 text-white" : "hover:bg-gray-100"
-                  }`}
-                  onClick={() => handleTenantClick(tenant._id)}
-                >
-                  <div className="flex flex-col justify-start text-left">
-                    <p className="font-bold cursor-pointer text-[17px] w-full">{tenant.name}</p>
-                    <p className="text-[13px] font-normal text-inherit mt-[3px] mb-[30px] w-full">{tenant.description}</p>
-                  </div>
-                  <i className="fa-solid fa-chevron-right"></i>
-                </li>
-              ))}
+                .filter((tenant) => !tenant.disabled)
+                .slice()
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((tenant) => (
+                  <li
+                    key={tenant._id}
+                    className={`w-full h-fit flex flex-row justify-start items-center p-2 my-2 rounded-md cursor-pointer ${
+                      selectedTenant === tenant._id ? "bg-orange-600 text-white" : "hover:bg-gray-100"
+                    }`}
+                    onClick={() => handleTenantClick(tenant._id)}
+                  >
+                    <div className="flex flex-col justify-start text-left">
+                      <p className="font-bold cursor-pointer text-[17px] w-full">{tenant.name}</p>
+                      <p className="text-[13px] font-normal text-inherit mt-0.75 mb-7.5 w-full">{tenant.description}</p>
+                    </div>
+                    <i className="fa-solid fa-chevron-right"></i>
+                  </li>
+                ))}
             </ul>
           ) : (
             <p className="text-gray-500 italic">No websites available for this category</p>
@@ -127,27 +129,29 @@ const TenantApps = () => {
       </div>
 
       {/* Apps Section */}
-      <div className="flex flex-col justify-start items-start w-[99%] lg:w-[30%] h-[290px] lg:h-[90%] pl-0 lg:mt-0">
+      <div className="flex flex-col justify-start items-start w-[99%] lg:w-[30%] h-72.5 lg:h-[90%] pl-0 lg:mt-0">
         <h2 className="w-[95%] text-xl font-bold mb-1 lg:mb-4 pb-1 lg:pb-0 border-b border-solid border-gray-400 lg:border-none" style={{marginBottom: "15px"}}>App Version</h2>
         {selectedTenant ? (
           apps.length > 0 ? (
             <ul className="w-[95%]">
-              {apps.map((app) => (
-                <li key={app._id} className="my-2">
-                  <a
-                    href={app.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex flex-row justify-start items-center p-3 my-2 rounded-md cursor-pointer hover:bg-orange-600 hover:text-white"
-                  >
-                    <div>
-                      <p className="font-bold">{app.name}</p>
-                      <p className="text-sm">{app.description}</p>
-                    </div>
-                    <SquareArrowUpRight className="ml-auto" />
-                  </a>
-                </li>
-              ))}
+              {apps
+                .filter((app) => !app.disabled)
+                .map((app) => (
+                  <li key={app._id} className="my-2">
+                    <a
+                      href={app.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex flex-row justify-start items-center p-3 my-2 rounded-md cursor-pointer hover:bg-orange-600 hover:text-white"
+                    >
+                      <div>
+                        <p className="font-bold">{app.name}</p>
+                        <p className="text-sm">{app.description}</p>
+                      </div>
+                      <SquareArrowUpRight className="ml-auto" />
+                    </a>
+                  </li>
+                ))}
             </ul>
           ) : (
             <p className="text-gray-500 italic">No apps available for this website</p>

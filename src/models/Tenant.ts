@@ -4,6 +4,7 @@ interface ITenant {
   name: string;
   description: string;
   tenantCategoryId: mongoose.Types.ObjectId;
+  disabled?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -21,6 +22,10 @@ const tenantSchema = new Schema<ITenant>({
     type: Schema.Types.ObjectId,
     ref: 'TenantCategory',
     required: true,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 }, {
   timestamps: true,

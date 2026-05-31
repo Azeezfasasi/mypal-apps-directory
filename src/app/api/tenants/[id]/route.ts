@@ -45,3 +45,19 @@ export async function DELETE(request, { params }) {
   }
 }
 
+export async function PATCH(request, { params }) {
+  try {
+    await connectDB();
+    const { id } = await params;
+    const body = await request.json();
+    const tenant = await Tenant.findByIdAndUpdate(id, body, { new: true }).populate('tenantCategoryId', 'name');
+    if (!tenant) {
+      return NextResponse.json({ message: 'Tenant not found' }, { status: 404 });
+    }
+    return NextResponse.json(tenant);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+  }
+}
+

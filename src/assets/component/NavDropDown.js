@@ -77,6 +77,11 @@ const NavDropdownMenu = () => {
               </Link>
             </li>
             <li>
+              <Link href="/dashboard/disabledapps" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
+                <FolderPlus className="w-4 h-4" /> Disabled Items
+              </Link>
+            </li>
+            <li>
               <Link href="/dashboard/profiledetails" className="flex justify-start items-center gap-1 px-4 py-2 text-white hover:bg-red-600" style={{padding: "0 5px"}}>
                 <User className="w-4 h-4" /> Profile Details
               </Link>

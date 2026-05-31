@@ -2,10 +2,23 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongoose';
 import TenantCategory from '@/models/TenantCategory';
 
-export async function GET() {
+export async function GET(request) {
   try {
     await connectDB();
-    const categories = await TenantCategory.find({}).sort({ name: 1 });
+    let filter = {};
+    if (request && request.url) {
+      const { searchParams } = new URL(request.url);
+      if (searchParams.has('disabled')) {
+        const disabled = searchParams.get('disabled');
+        if (disabled === 'true') filter = { disabled: true };
+        else if (disabled === 'false') filter = { disabled: false };
+      } else {
+        filter = { disabled: false };
+      }
+    } else {
+      filter = { disabled: false };
+    }
+    const categories = await TenantCategory.find(filter).sort({ name: 1 });
     return NextResponse.json(categories);
   } catch (error) {
     console.error(error);

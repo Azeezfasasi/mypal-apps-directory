@@ -5,6 +5,7 @@ interface IApp {
   description?: string;
   tenantId: mongoose.Types.ObjectId;
   link?: string;
+  disabled?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -24,6 +25,10 @@ const appSchema = new Schema<IApp>({
   },
   link: {
     type: String,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 }, {
   timestamps: true,

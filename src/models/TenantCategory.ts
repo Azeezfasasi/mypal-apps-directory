@@ -3,6 +3,7 @@ import mongoose, { Schema, Model } from 'mongoose';
 interface ITenantCategory {
   name: string;
   description?: string;
+  disabled?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -14,6 +15,10 @@ const tenantCategorySchema = new Schema<ITenantCategory>({
   },
   description: {
     type: String,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 }, {
   timestamps: true,

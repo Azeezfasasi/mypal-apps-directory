@@ -6,7 +6,8 @@ export async function GET(request, { params }) {
   try {
     await connectDB();
     const { id } = await params;
-    const apps = await App.find({ tenantId: id });
+    // Only return apps where disabled is false
+    const apps = await App.find({ tenantId: id, disabled: false });
     return NextResponse.json(apps);
   } catch (error) {
     console.error(error);
